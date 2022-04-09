@@ -1,33 +1,57 @@
-.form-daftar{
-    align-items: center;
-    align-content: center;
+.form-daftar {
+  align-items: center;
+  align-content: center;
 }
 
-.form-daftar label{
-    display: block;
-    width: 90%;
-    margin: 0 4rem ;
+.form-daftar label {
+  display: block;
+  width: 90%;
+  margin: 0 4rem;
 }
 
-.form-daftar input, select, textarea {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 5px;
-    border-radius: 7px;
+.form-daftar input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 7px;
 }
 
 .form-daftar textarea {
-    height: 15vh;
-    border-radius: 7px;
+  height: 15vh;
+  border-radius: 7px;
 }
 
 .form-daftar button {
-    display: inline-block;
-    background-color: red;
-    border-radius: 7px;
-    padding: 8px;
-    width: 8rem;
-    color: white;
-    border: none;
+  display: inline-block;
+  background-color: red;
+  border-radius: 7px;
+  padding: 8px;
+  width: 8rem;
+  color: white;
+  border: none;
+}
+
+.form-daftar .input-submit {
+  width: 8rem;
+  background-color: green;
+  color: white;
+  margin-left: 4rem;
+  margin-right: 10px;
+  margin-top: 30px;
+  display: inline-block;
+  border: none;
+  padding: 8px;
+}
+
+.error {
+  padding: 5px;
+  margin: 0 4rem;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
 }

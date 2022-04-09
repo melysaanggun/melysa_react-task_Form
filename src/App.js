@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form dataVal={data} />
+      <Form dataVal={data}/>
     </div>
   );
 }

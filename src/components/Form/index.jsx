@@ -9,9 +9,14 @@ const Form = (props) => {
         pendidikan:"",
         kelas:"",
         harapan:""
-      }
+    }
     
     const [data, setData] = useState(dataKosong)
+
+    const regexHuruf = /^[A-Za-z ]*$/;
+    const regexEmail = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+
+    const [errMsg, setErrMsg] = useState("")
 
     const fotoSurat = useRef(null)
 
@@ -19,16 +24,45 @@ const Form = (props) => {
         const name=e.target.name;
         const value=e.target.value;
 
+        if (name=== "nama") {
+            if (regexHuruf.test(value)){
+                setErrMsg("")
+            } else {
+                setErrMsg("Nama Lengkap harus berupa huruf")
+            }
+        } else if (name === "email"){
+            if (regexEmail.test(value)){
+                setErrMsg("")
+            } else {
+                setErrMsg("Email tidak sesuai")
+            }
+        } else if (name === "noHp"){
+            if (data.noHp.length < 9 || data.noHp.length > 14) {
+                setErrMsg("Nomor Handphone tidak sesuai")
+            } else {
+                setErrMsg("")
+            }
+        }
+
         setData ({
             ...data,
             [name]: value
         })
+        console.log("data", data)
+    }
+
+    const handleSubmit = () => {
+        if (errMsg !== "") {
+            alert("Terdapat data yang tidak sesuai")
+        } else {
+            alert('Data peserta berhasil diterima!')
+        }
     }
 
     return ( 
         <div className="form-daftar">
             <h1> Pendaftaran Peserta Coding Bootcamp </h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Nama Lengkap :
                 <input
                     type="text"
@@ -88,7 +122,6 @@ const Form = (props) => {
                     Foto Surat Kesungguhan : 
                     <input
                     type="file"
-                    name="foto"
                     ref={fotoSurat}
                 />
                 </label>
@@ -96,21 +129,13 @@ const Form = (props) => {
                     Harapan untuk Coding Bootcamp ini : <br/>
                     <textarea name="harapan" onChange={handleInput} value={data.harapan}/>
                 </label>
+                <div className="error">
+                    <span className="errorMessage">{errMsg}</span>
+                </div>
                 <input 
                 type="submit"
                 value="Submit"
-
-                style={{width:"8rem", 
-                backgroundColor:"green", 
-                color:"white",
-                marginLeft:"4rem",
-                marginRight:"10px",
-                marginTop: "30px",
-                display:"inline-block",
-                border: "none",
-                padding: "8px"
-                }}
-
+                className="input-submit"
                 required
                  />
                  <button>Reset</button>
